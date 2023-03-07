@@ -1,7 +1,6 @@
 import re
 import read_text_in_soup as RS
-
-from bs4 import BeautifulSou
+from bs4 import BeautifulSoup
 
 # фильтрация названия модели
 def filter_nomer_grout(soup):
@@ -26,7 +25,6 @@ def find_katalog_is_nomer(soup, nomer_grout):
         #td
         print(katalog)
     return katalog
-
 
 # фильтрация данных кроссов
 def filter_kross(soup):

@@ -11,11 +11,17 @@ def number_of_details_page():
         one_pages_details = soup.find_all('div', class_='catalog_group_title')
         if one_pages_details != '':
             print(f"Одна деталь на странице = {one_pages_details}")
+            # ----- Сохраняем кроссы из сохраненной станицы
+            # ----- Вывоодим в окно информацию о сохранении страницы
             return
         else:
             print(f"Страница пуста = {one_pages_details}")
+            # ----- Вводим в окне что нет такой детали
     elif len_how_many_pages_with_a_detail > 1:
         print(len_how_many_pages_with_a_detail)
+        # ----- Сохраняем все ссылки на детали
+        # ----- Сохраняем кроссы со всех станициц
+        # ----- Вывоодим в окно информацию о сохраненых страницах
         return #подумать
     # print(len(how_many_pages_with_a_detail))
     # print([texts.find('h2').text for texts in how_many_pages_with_a_detail])
@@ -23,8 +29,6 @@ def number_of_details_page():
 def main(nomer):
     #RU.reader_url_saved_text_nomer(nomer)
     number_of_details_page()
-
-
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
