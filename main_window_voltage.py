@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Aleksey\PycharmProjects\valtage_nomer_sait\main_window_voltage.ui'
+# Form implementation generated from reading ui file 'C:\Users\Aleksey\PycharmProjects\one_project\main_window_voltage.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #

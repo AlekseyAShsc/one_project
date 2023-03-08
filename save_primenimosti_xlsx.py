@@ -29,13 +29,13 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
     soobsenie_v_formu = ''
     try:
         if os.path.isfile(f'voltage.xlsx'):  # Если файл сужествует открываем для записи
-            print('Файл уже есть, открываем')
             soobsenie_v_formu += 'Файл voltage.xlsx уже есть, открываем. '
+            print(soobsenie_v_formu)
             excel_file = openpyxl.load_workbook(f'voltage.xlsx')
             shet_names = excel_file.sheetnames
             if nomer_grout in shet_names:  # проверияем существует ли лист с такой деталью
-                print(f'Есть такой лист. Пересохраняем')
-                soobsenie_v_formu += f'Лист с деталью {nomer_grout} уже есть, пересохраняем. '
+                soobsenie_v_formu += f'Лист с деталью {nomer_grout} уже есть, пересохраняем. \n'
+                print(soobsenie_v_formu)
                 #excel_sheet = excel_file.create_sheet(title=(f'{list}NEW'))
                 #excel_sheet = excel_file[model]
                 excel_file.remove(excel_file[nomer_grout])
@@ -44,13 +44,14 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
             else:
                 excel_sheet = excel_file.create_sheet(title=nomer_grout)
                 print('Сохраняем новый лист')
-                soobsenie_v_formu += f'Сохраняем деталь с номером {nomer_grout} на новый лист. '
+                soobsenie_v_formu += f'Сохраняем деталь с номером {nomer_grout} на новый лист. \n'
         else:  # Иначе открываем пустой и формуем лист
             excel_file = openpyxl.Workbook()
             excel_sheet = excel_file.active
+            excel_file.create_sheet("Новый лист")
             excel_sheet.title = nomer_grout
-            print('Новый файл, новый лист')
-            soobsenie_v_formu += f'Файла voltage.xlsx не существует, открываем новый.  Сохраняем деталь с номером {nomer_grout} на новый лист.'
+            soobsenie_v_formu += f'Файла voltage.xlsx не существует, открываем новый.  Сохраняем деталь с номером {nomer_grout} на новый лист. \n'
+            print(soobsenie_v_formu)
 
         # Установки ширины столбцов
         excel_sheet.column_dimensions["A"].width = 25

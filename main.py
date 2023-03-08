@@ -12,14 +12,14 @@ def number_of_details_page():
     len_how_many_pages_with_a_detail = len(how_many_pages_with_a_detail)
     if len_how_many_pages_with_a_detail == 0:
         one_pages_details = soup.find_all('div', class_='catalog_group_title')
-        print(type(soup))
-        print(type(one_pages_details))
+        # print(type(soup))
+        # print(type(one_pages_details))
         if one_pages_details != '':
             nomer_na_stranice = one_pages_details[0].text.strip()
             print(f"Одна деталь на странице = |{nomer_na_stranice}|")
             # ----- Сохраняем кроссы из сохраненной станицы
-            SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup))
-            ui.label.setText(f"Одна деталь на странице = |{nomer_na_stranice}|")
+            text_soobshchenie = SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup))
+            ui.label.setText(ui.label.text() + text_soobshchenie)
             # ----- Вывоодим в окно информацию о сохранении страницы
             return
         else:
@@ -37,16 +37,16 @@ def number_of_details_page():
             soup_w = RT.read_text() # Читаем из текстового фйла и делаем суп
             text_soobshchenie = SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup_w)) # Сохраняем данные в exel файл
             list_number_details.append(nomer_na_stranice)
-
+            ui.label.setText(ui.label.text() + text_soobshchenie)
         # ----- Вывоодим в окно информацию о сохраненых страницах
         # ui.label.setText(f"Страницы с такими номероми - |{list(list_number_details)}| сохранены")
-        ui.label.setText(text_soobshchenie)
         return #подумать
 
 def main(nomer):
     nomer=ui.LE_input_nomer.text()
+    ui.label.setText('')
     print(nomer)
-    #RU.reader_url_saved_text_nomer(nomer)
+    # RU.reader_url_saved_text_nomer(nomer)
     number_of_details_page()
 
 # Press the green button in the gutter to run the script.
