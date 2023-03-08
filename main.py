@@ -1,7 +1,9 @@
+import sys
 import reader_url_saved_text as RU
 import read_text_in_soup as RT
 import cross as CR
 import save_primenimosti_xlsx as SPX
+from main_window_voltage import *
 
 def number_of_details_page():
     soup = RT.read_text()
@@ -17,28 +19,45 @@ def number_of_details_page():
             print(f"Одна деталь на странице = |{nomer_na_stranice}|")
             # ----- Сохраняем кроссы из сохраненной станицы
             SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup))
+            ui.label.setText(f"Одна деталь на странице = |{nomer_na_stranice}|")
             # ----- Вывоодим в окно информацию о сохранении страницы
             return
         else:
             print(f"Страница пуста = {one_pages_details}")
             # ----- Вводим в окне что нет такой детали
+            ui.label.setText(f"Страницы с таким номером нет - |{one_pages_details}|")
     elif len_how_many_pages_with_a_detail > 1:
+        # список номеров деталей
+        list_number_details = []
         # перебираем все детали на листе
         for href in how_many_pages_with_a_detail:
             url = (f"https://voltag.ru{href.find('a').get('href')}") # Формируем адрес старницы детали
-            nomer_na_stranice = href.find('h2').text # Дерем номер детали на странице
+            nomer_na_stranice = href.find('h2').text # Берем номер детали на странице
             RU.reader_url_saved_text_url(url) # Сохраняем страницу в текстовый файл
             soup_w = RT.read_text() # Читаем из текстового фйла и делаем суп
-            SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup_w)) # Сохраняем данные в exel файл
+            text_soobshchenie = SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup_w)) # Сохраняем данные в exel файл
+            list_number_details.append(nomer_na_stranice)
+
         # ----- Вывоодим в окно информацию о сохраненых страницах
+        # ui.label.setText(f"Страницы с такими номероми - |{list(list_number_details)}| сохранены")
+        ui.label.setText(text_soobshchenie)
         return #подумать
 
 def main(nomer):
+    nomer=ui.LE_input_nomer.text()
+    print(nomer)
     #RU.reader_url_saved_text_nomer(nomer)
     number_of_details_page()
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    nomer = 'DRS5930'
-    # 'div', class = 'catalog_item_title_wrap'
-    main(nomer)
+    # nomer = 'DRS5930'
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    ui.B_Search.clicked.connect(main)
+    ui.B_exit.clicked.connect(sys.exit)
+    # MainWindow.keyPressEvent(ui.QKeyEvent.key_event_text)
+    sys.exit(app.exec_())

@@ -1,5 +1,6 @@
 import os.path
 import openpyxl
+from main_window_voltage import *
 
 def formirovanie_cross(cross):
     spisok_cross = []
@@ -25,14 +26,16 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
 
     new_cross = formirovanie_cross(cross)
     res = formirovanie_cross_cross(new_cross)
-
+    soobsenie_v_formu = ''
     try:
         if os.path.isfile(f'voltage.xlsx'):  # Если файл сужествует открываем для записи
             print('Файл уже есть, открываем')
+            soobsenie_v_formu += 'Файл voltage.xlsx уже есть, открываем. '
             excel_file = openpyxl.load_workbook(f'voltage.xlsx')
             shet_names = excel_file.sheetnames
             if nomer_grout in shet_names:  # проверияем существует ли лист с такой деталью
                 print(f'Есть такой лист. Пересохраняем')
+                soobsenie_v_formu += f'Лист с деталью {nomer_grout} уже есть, пересохраняем. '
                 #excel_sheet = excel_file.create_sheet(title=(f'{list}NEW'))
                 #excel_sheet = excel_file[model]
                 excel_file.remove(excel_file[nomer_grout])
@@ -41,11 +44,13 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
             else:
                 excel_sheet = excel_file.create_sheet(title=nomer_grout)
                 print('Сохраняем новый лист')
+                soobsenie_v_formu += f'Сохраняем деталь с номером {nomer_grout} на новый лист. '
         else:  # Иначе открываем пустой и формуем лист
             excel_file = openpyxl.Workbook()
             excel_sheet = excel_file.active
             excel_sheet.title = nomer_grout
             print('Новый файл, новый лист')
+            soobsenie_v_formu += f'Файла voltage.xlsx не существует, открываем новый.  Сохраняем деталь с номером {nomer_grout} на новый лист.'
 
         # Установки ширины столбцов
         excel_sheet.column_dimensions["A"].width = 25
@@ -72,7 +77,8 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
         excel_file.save(f'voltage.xlsx')
     except Exception as error:
         print('Ошибка в формировании и сохранении файла: ' + repr(error))
-
+        soobsenie_v_formu += f'Ошибка в формировании и сохранении файла: {repr(error)}'
+    return soobsenie_v_formu
 
 
 if __name__ == '__main__':

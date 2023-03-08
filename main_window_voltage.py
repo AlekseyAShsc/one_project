@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Aleksey\PycharmProjects\one_project\main_window_voltage.ui'
+# Form implementation generated from reading ui file 'C:\Users\Aleksey\PycharmProjects\valtage_nomer_sait\main_window_voltage.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.LE_input_nomer = QtWidgets.QLineEdit(self.centralwidget)
         self.LE_input_nomer.setEnabled(True)
-        self.LE_input_nomer.setGeometry(QtCore.QRect(50, 40, 700, 60))
+        self.LE_input_nomer.setGeometry(QtCore.QRect(260, 10, 521, 60))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -34,23 +34,26 @@ class Ui_MainWindow(object):
         self.LE_input_nomer.setText("")
         self.LE_input_nomer.setObjectName("LE_input_nomer")
         self.L_Description = QtWidgets.QLabel(self.centralwidget)
-        self.L_Description.setGeometry(QtCore.QRect(50, 10, 331, 20))
+        self.L_Description.setGeometry(QtCore.QRect(20, 40, 211, 20))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.L_Description.setFont(font)
         self.L_Description.setObjectName("L_Description")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(50, 110, 541, 21))
+        self.label.setGeometry(QtCore.QRect(30, 80, 741, 21))
         self.label.setText("")
         self.label.setObjectName("label")
         self.B_Search = QtWidgets.QPushButton(self.centralwidget)
-        self.B_Search.setGeometry(QtCore.QRect(604, 110, 141, 31))
+        self.B_Search.setGeometry(QtCore.QRect(300, 100, 150, 35))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(False)
         font.setWeight(50)
         self.B_Search.setFont(font)
         self.B_Search.setObjectName("B_Search")
+        self.B_exit = QtWidgets.QPushButton(self.centralwidget)
+        self.B_exit.setGeometry(QtCore.QRect(620, 100, 150, 35))
+        self.B_exit.setObjectName("B_exit")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -64,6 +67,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.L_Description.setText(_translate("MainWindow", "Введите номер детали:"))
         self.B_Search.setText(_translate("MainWindow", "Поиск"))
+        self.B_exit.setText(_translate("MainWindow", "Закрыть"))
 
 
 if __name__ == "__main__":
