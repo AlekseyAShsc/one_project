@@ -1,2 +1,2 @@
-C:\Users\Aleksey\PycharmProjects\one_project\venv\Scripts\pyuic5.exe -x C:\Users\Aleksey\PycharmProjects\one_project\main_window_voltage.ui  -o C:\Users\Aleksey\PycharmProjects\one_project\main_window_voltage.py
+%~dp0venv\Scripts\pyuic5.exe -x %~dp0main_window_voltage.ui  -o %~dp0main_window_voltage.py
 pause
