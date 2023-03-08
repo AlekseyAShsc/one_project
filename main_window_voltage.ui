@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>794</width>
-    <height>166</height>
+    <height>195</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -70,10 +70,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>80</y>
-      <width>741</width>
-      <height>21</height>
+      <width>761</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -83,8 +83,8 @@
    <widget class="QPushButton" name="B_Search">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>100</y>
+      <x>310</x>
+      <y>130</y>
       <width>150</width>
       <height>35</height>
      </rect>
@@ -103,8 +103,8 @@
    <widget class="QPushButton" name="B_exit">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>100</y>
+      <x>630</x>
+      <y>130</y>
       <width>150</width>
       <height>35</height>
      </rect>
