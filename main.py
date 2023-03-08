@@ -1,12 +1,11 @@
 import sys
-import reader_url_saved_text as RU
-import read_text_in_soup as RT
+import reader_url_in_sout as R_SB
 import cross as CR
 import save_primenimosti_xlsx as SPX
 from main_window_voltage import *
 
-def number_of_details_page():
-    soup = RT.read_text()
+def number_of_details_page(nomer):
+    soup = R_SB.reader_nomer_in_BS(nomer)
     how_many_pages_with_a_detail = soup.find_all('div', class_='catalog_item_title')
     #how_many_pages_with_a_detail = soup.find_all('div', class_ = 'catalog_item_title_wrap')
     len_how_many_pages_with_a_detail = len(how_many_pages_with_a_detail)
@@ -33,21 +32,18 @@ def number_of_details_page():
         for href in how_many_pages_with_a_detail:
             url = (f"https://voltag.ru{href.find('a').get('href')}") # Формируем адрес старницы детали
             nomer_na_stranice = href.find('h2').text # Берем номер детали на странице
-            RU.reader_url_saved_text_url(url) # Сохраняем страницу в текстовый файл
-            soup_w = RT.read_text() # Читаем из текстового фйла и делаем суп
+            soup_w = R_SB.reader_url_in_BS(url)  # Читаем с сайта данные по url и делаем суп
             text_soobshchenie = SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup_w)) # Сохраняем данные в exel файл
             list_number_details.append(nomer_na_stranice)
             ui.label.setText(ui.label.text() + text_soobshchenie)
         # ----- Вывоодим в окно информацию о сохраненых страницах
-        # ui.label.setText(f"Страницы с такими номероми - |{list(list_number_details)}| сохранены")
         return #подумать
 
 def main(nomer):
     nomer=ui.LE_input_nomer.text()
     ui.label.setText('')
     print(nomer)
-    # RU.reader_url_saved_text_nomer(nomer)
-    number_of_details_page()
+    number_of_details_page(nomer)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

@@ -43,8 +43,8 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
                 excel_sheet = excel_file.create_sheet(title=nomer_grout)
             else:
                 excel_sheet = excel_file.create_sheet(title=nomer_grout)
-                print('Сохраняем новый лист')
                 soobsenie_v_formu += f'Сохраняем деталь с номером {nomer_grout} на новый лист. \n'
+                print(soobsenie_v_formu)
         else:  # Иначе открываем пустой и формуем лист
             excel_file = openpyxl.Workbook()
             excel_sheet = excel_file.active
