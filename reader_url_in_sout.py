@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def reader_nomer_in_BS(nomer_detali):
     """
     Чтение страница на вольтаже по номеру и сохранение страницы в файл
@@ -54,6 +55,7 @@ def reader_nomer_in_BS(nomer_detali):
         print(f"Ошибка при формировании BS")
     return result
 
+
 def reader_url_in_BS(url):
     """
     :param url: адрес страницы с которой парсятся данные
@@ -80,4 +82,4 @@ def reader_url_in_BS(url):
 
 
 if __name__ == '__main__':
-    reader_url_saved_text_nomer('SHB5741MG')
+    pass

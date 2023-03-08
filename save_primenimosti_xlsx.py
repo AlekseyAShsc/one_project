@@ -1,6 +1,5 @@
 import os.path
 import openpyxl
-from main_window_voltage import *
 
 def formirovanie_cross(cross):
     spisok_cross = []
@@ -22,7 +21,7 @@ def formirovanie_cross_cross(spisok_cross):
     return result_cross
 
 # запись данных в файл
-def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
+def save_dannix_detali(nomer_grout, cross):
 
     new_cross = formirovanie_cross(cross)
     res = formirovanie_cross_cross(new_cross)
@@ -86,6 +85,6 @@ if __name__ == '__main__':
     cross = {'AS': 'S0422', 'Bosch': ['0001218141', '0001218741', '0986015930', '0986015931'], 'Cargo': ['111421', '116327'], 'Citroen': '5802000', 'Delco': 'DRS5930', 'FIAT': ['46231644', '7589005', '7589151', '75891510', '7726946', '77679430'], 'HC-PARTS': 'CS554', 'KRAUF': 'STB0554MN', 'LUCAS': 'LRS743', 'Magneti Marelli': ['063222034010', '63222034', '63222138', 'E95R22KW12V'], 'Motorherz': ['STB0554WA', 'STE0554RB'], 'Prestolite': '35260920', 'Valeo': '455626', 'WAI': '30743R', 'ZAUFER': '300N10910Z'}
     nomer_grout = 'STB0554'
     # save_dannix_detali(nomer_grout, cross, 'KRAUF')
-    save_dannix_detali('SDE2818', cross, 'KRAUF')
+    save_dannix_detali('SDE2818', cross)
 
 

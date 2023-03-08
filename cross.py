@@ -1,6 +1,5 @@
 import re
-import read_text_in_soup as RS
-from bs4 import BeautifulSoup
+import reader_url_in_sout as R_SB
 
 # фильтрация названия модели
 def filter_nomer_grout(soup):
@@ -12,6 +11,7 @@ def filter_nomer_grout(soup):
 
 # Пытаемся найти каталог по номеру
 def find_katalog_is_nomer(soup, nomer_grout):
+    global katalog
     quotes_kross = soup.find('div', class_='catalog_group_crosslist_info')
     print(f'ищим каталог группы - {nomer_grout}')
     vxosdenie_nomera = quotes_kross.find_all(string = (re.compile(nomer_grout)))
@@ -49,6 +49,7 @@ def filter_kross(soup):
     return cross
 
 if __name__ == '__main__':
-    soup = RS.read_text()
     nomer_grout = 'HAZ0020'
+    soup = R_SB.reader_nomer_in_BS(nomer_grout)
+
     print(find_katalog_is_nomer(soup, nomer_grout))

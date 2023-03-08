@@ -33,7 +33,8 @@ def number_of_details_page(nomer):
             url = (f"https://voltag.ru{href.find('a').get('href')}") # Формируем адрес старницы детали
             nomer_na_stranice = href.find('h2').text # Берем номер детали на странице
             soup_w = R_SB.reader_url_in_BS(url)  # Читаем с сайта данные по url и делаем суп
-            text_soobshchenie = SPX.save_dannix_detali(nomer_na_stranice, CR.filter_kross(soup_w)) # Сохраняем данные в exel файл
+            text_soobshchenie = SPX.save_dannix_detali(nomer_na_stranice,
+                                                       CR.filter_kross(soup_w))  # Сохраняем данные в exel файл
             list_number_details.append(nomer_na_stranice)
             ui.label.setText(ui.label.text() + text_soobshchenie)
         # ----- Вывоодим в окно информацию о сохраненых страницах
@@ -53,7 +54,11 @@ if __name__ == '__main__':
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    ui.LE_input_nomer.setFocus()
     ui.B_Search.clicked.connect(main)
+    ui.B_Search.setAutoDefault(True)
+    ui.LE_input_nomer.returnPressed.connect(ui.B_Search.click)
     ui.B_exit.clicked.connect(sys.exit)
+
     # MainWindow.keyPressEvent(ui.QKeyEvent.key_event_text)
     sys.exit(app.exec_())
