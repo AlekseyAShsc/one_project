@@ -1,0 +1,22 @@
+https://curlconverter.com - Convert curl commands to Python, JavaScript and more
+
+взято с: https://ru.hexlet.io/blog/posts/kak-prisoedinitsya-k-rabote-nad-opensorsom-chto-takoe-ps1-i-drugie-voprosy-otvechaet-razrabotchik-heksleta-andrey-moshkov#chto-takoe-ps1-i-dlya-chego-ispolzuetsya
+Если вы пользуетесь Bash и у вас настроен bash completion, добавьте в файл .bashrc такой код:
+меняет внешний вид строки приглашения
+export PS1="<D83D><DCBB> \[\e[1;34m\]\W\[\e[m\]\[\033[32m\]\$(__git_ps1)\[\033[00m\] $ "
+export PS1="\W\$(__git_ps1) $ "
+
+Как правильно составлять описания коммитов и почему это важно - https://ru.hexlet.io/blog/posts/git-commit-message
+Команды Git - Основные команды - https://git-scm.com/book/ru/v2/Приложение-C%3A-Команды-Git-Основные-команды
+
+
+# При выполнении задачи состояние репозитория могло измениться.
+# Перед набором команд из списка, обновите упражнение с помощью кнопки Сброс
+
+cd code-user/ # Переходим в директорию code-user
+git log -p --oneline -- todo.md
+git checkout 7c2fcf8
+
+# Альтернативный вариант решения использовать опцию --name-status
+# git log --name-status
+# Метка "A" перед файлом, сокращение от "Added"
