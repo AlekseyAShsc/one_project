@@ -72,7 +72,7 @@ def save_dannix_detali(nomer_grout, cross, katalog='KRAUF'):
             excel_sheet.cell(row=stroka, column=2).value = nomer1
             excel_sheet.cell(row=stroka, column=3).value = katalog2
             excel_sheet.cell(row=stroka, column=4).value = nomer2
-            excel_sheet.cell(row=stroka, column=5).value = 'сайт Вольтаж'
+            excel_sheet.cell(row=stroka, column=5).value = f"сайт Вольтаж, номер-' {nomer_grout}"
             stroka += 1
         excel_file.save(f'voltage.xlsx')
     except Exception as error:
