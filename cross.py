@@ -26,6 +26,18 @@ def find_katalog_is_nomer(soup, nomer_grout):
         print(katalog)
     return katalog
 
+# Формирование параметров детали
+def filter_param(soup):
+    quotes_param = soup.find('div', class_='catalog_group_params').find('tbody')
+    table_param = []
+    # Create a for loop to fill mydata
+    for table_row_param in quotes_param.find_all('tr'):
+        table_row_separated_param = table_row_param.find_all('td')
+        table_row_separated_param_sets = [cell_param.text.replace(u'\xa0', u' ') for cell_param in table_row_separated_param]
+        table_param.append(table_row_separated_param_sets)
+
+    return table_param
+
 # фильтрация данных кроссов
 def filter_kross(soup):
     quotes_kross = soup.find('div', class_='catalog_group_crosslist_info')
@@ -51,4 +63,5 @@ def filter_kross(soup):
 if __name__ == '__main__':
     soup = RS.read_text()
     nomer_grout = 'HAZ0020'
-    print(find_katalog_is_nomer(soup, nomer_grout))
+    print(*filter_param(soup))
+    # print(find_katalog_is_nomer(soup, nomer_grout))
